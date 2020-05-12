@@ -1,9 +1,7 @@
 package src.main.java.org.volha.javatraining.csvspringboot;
 
 import java.io.*;
-import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -21,16 +19,16 @@ import java.util.TreeSet;
 
 @Service
 
-public class CsvReadService {
+public class CSVReadService {
     private static final int COMPANY_COLUMN = 0;
     private static final int COUNTRY_COLUMN = 8;
     static TreeMap<Country, TreeSet<String>> countryCompanies = new TreeMap<>();
-    private CsvReadResult csvReadResult = new CsvReadResult();
+    private CSVReadResult csvReadResult = new CSVReadResult();
 
-    public CsvReadResult readProcessFile(String directoryPath, String inputFile, String resultFile) {
+    public CSVReadResult readProcessFile(String directoryPath, String inputFile, String resultFile) {
         System.out.println("test - read Process file" + directoryPath + inputFile);
         csvReadResult.setSuccess(true);
-        String inputFilePath = String.valueOf(Paths.get(directoryPath + inputFile));
+        String inputFilePath = (Paths.get(directoryPath + inputFile)).toAbsolutePath().toString();
         System.out.println("test - take inpuFile path" + inputFilePath);
         readDataLineByLine(inputFilePath);
         if (csvReadResult.isSuccess()) {
@@ -47,7 +45,7 @@ public class CsvReadService {
 
     }
 
-    private CsvReadResult readDataLineByLine(String inputFilePath) {
+    private CSVReadResult readDataLineByLine(String inputFilePath) {
 //        System.out.println( "test" + directoryPath + inputFile);
 //        String inputFilePath = String.valueOf(Paths.get(directoryPath + inputFile));
 
@@ -68,7 +66,7 @@ public class CsvReadService {
         } catch (Exception e) {
             e.printStackTrace();
             csvReadResult.setSuccess(false);
-            csvReadResult.setMessage("Problems reading .csv file occured."+e);
+            csvReadResult.setMessage("Problems reading .csv file occured." + e);
 
         }
 
@@ -113,28 +111,16 @@ public class CsvReadService {
         }
     }
 
-    public static boolean deleteFile(String directoryPath, String RESULT_FILE) {
-        String fileToDelete = String.valueOf(Paths.get(directoryPath + RESULT_FILE));
-        //String fileToDelete = directory + "\\" + fileName;
+    public static boolean deleteFile(String directoryPath, String resultFile) {
+        String fileToDelete = (Paths.get(directoryPath + resultFile)).toAbsolutePath().toString();
         System.out.println("File to delete " + fileToDelete);
-        boolean fileDeleted = true;
         try {
-            Files.deleteIfExists(Paths.get(fileToDelete));
-        } catch (NoSuchFileException e) {
-            System.out.println("No such file/directory exists");
-        }
-        ///??? Does this exception make sense????
-
-        catch (DirectoryNotEmptyException e) {
-            System.out.println("Directory is not empty.");
-            return fileDeleted;
+            return Files.deleteIfExists(Paths.get(fileToDelete));
         } catch (IOException e) {
-            System.out.println("Invalid permissions.");
-            return fileDeleted;
-        } finally {
-            System.out.println("Deletion successful.");
-            return fileDeleted;
+            e.printStackTrace();
+            return false;
         }
+
     }
 
     public static void writeFile(String directoryPath, String resultFile) {
@@ -144,38 +130,39 @@ public class CsvReadService {
         File file = new File(fileToCreate);
         System.out.println("file is creted" + fileToCreate);
 
-        FileWriter outputfile = null;
-        try {
+        //FileWriter outputFileWriter = null;
+        try (FileWriter outputFileWriter = new FileWriter(file);) {
             //create FileWriter object with file as parameter
-            outputfile = new FileWriter(file);
+
             // create CSVWriter object filewriter object as parameter
 
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
 
-        for (Map.Entry<Country, TreeSet<String>>
-                entry : countryCompanies.entrySet()) {
-            Country country = entry.getKey();
-            System.out.println(country + "" + entry.getValue());
-        }
-
-        CSVWriter writer = new CSVWriter(outputfile);
-        for (Map.Entry<Country, TreeSet<String>>
-                entry : countryCompanies.entrySet()) {
-            Country country = entry.getKey();
-            for (String company : entry.getValue()) {
-                String[] data = new String[2];
-                data[0] = String.valueOf(country);
-                data[1] = company;
-                writer.writeNext(data);
-                System.out.println(data[0] + data[1]);
-//
+            for (Map.Entry<Country, TreeSet<String>>
+                    entry : countryCompanies.entrySet()) {
+                Country country = entry.getKey();
+                System.out.println(country + "" + entry.getValue());
             }
-        }
-        try {
-            writer.close();
+
+            try (CSVWriter writer = new CSVWriter(outputFileWriter);) {
+                for (Map.Entry<Country, TreeSet<String>>
+                        entry : countryCompanies.entrySet()) {
+                    Country country = entry.getKey();
+                    for (String company : entry.getValue()) {
+                        String[] data = new String[2];
+                        data[0] = String.valueOf(country);
+                        data[1] = company;
+                        writer.writeNext(data);
+                        System.out.println(data[0] + data[1]);
+//
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

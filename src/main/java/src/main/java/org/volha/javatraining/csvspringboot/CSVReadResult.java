@@ -1,6 +1,6 @@
 package src.main.java.org.volha.javatraining.csvspringboot;
 
-public class CsvReadResult {
+public class CSVReadResult {
 
 
     private boolean success;
@@ -22,7 +22,7 @@ public class CsvReadResult {
         this.message = message;
     }
 
-    public CsvReadResult() {
+    public CSVReadResult() {
     }
 
 }

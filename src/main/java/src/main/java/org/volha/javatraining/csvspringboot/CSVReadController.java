@@ -11,7 +11,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping("/csvfile")
-public class CvsReadController {
+public class CSVReadController {
     //    private String UPLOADED_FOLDER = "D:\\Java\\JavaTraining\\";
 //    static final String INPUT_FILE = "data.csv";
 //    public static final String RESULT_FILE = "result.csv";
@@ -19,10 +19,10 @@ public class CvsReadController {
     private static final int COUNTRY_COLUMN = 8;
     static TreeMap<Country, TreeSet<String>> countryCompanies = new TreeMap<>();
 
-    private CsvReadService csvReadService;
+    private final CSVReadService csvReadService;
 
     @Autowired
-    public CvsReadController(CsvReadService csvReadService) {
+    public CSVReadController(CSVReadService csvReadService) {
         this.csvReadService = csvReadService;
     }
 //    @GetMapping(path = "{csvreaderresult}")
@@ -44,13 +44,13 @@ public class CvsReadController {
 //
 
     @RequestMapping(method = POST, value = "/read-company-country")
-    public ResponseEntity readCSVFile(@RequestBody CsvReadRequest csvReadRequest) {
+    public ResponseEntity<?> readCSVFile(@RequestBody CSVReadRequest csvReadRequest) {
 //                String inputFilePath = String.valueOf(Paths.get(UPLOADED_FOLDER
 //             + CSVFileApplication.RESULT_FILE));
         System.out.println("Hello");
-        System.out.println("folder    " + csvReadRequest.getFileLocation() + "file " + csvReadRequest.getInputfilename() + "out " + csvReadRequest.getOutpufilename());
-        CsvReadResult csvReadResult = csvReadService.readProcessFile(csvReadRequest.getFileLocation(), csvReadRequest.getInputfilename(), csvReadRequest.getOutpufilename());
-        System.out.println(" row 53 folder" + csvReadRequest.getFileLocation() + "file" + csvReadRequest.getInputfilename());
+        System.out.println("folder    " + csvReadRequest.getFileLocation() + "file " + csvReadRequest.getInputFileName() + "out " + csvReadRequest.getOutputFileName());
+        CSVReadResult csvReadResult = csvReadService.readProcessFile(csvReadRequest.getFileLocation(), csvReadRequest.getInputFileName(), csvReadRequest.getOutputFileName());
+        System.out.println(" row 53 folder" + csvReadRequest.getFileLocation() + "file" + csvReadRequest.getInputFileName());
         System.out.println(csvReadResult.isSuccess());
         //csvReadService.readDataLineByLine(directoryPath, String INPUT_FILE);
         if (csvReadResult.isSuccess()) {
