@@ -14,30 +14,32 @@ public class CSVCompaniesService {
     private static final int COUNTRY_COLUMN = 0;
 
     private final CompanyService companyService;
+    private CSVResult csvResult;
 
     @Autowired
-    public CSVCompaniesService(CompanyService companyService) {
+    public CSVCompaniesService(CompanyService companyService, CSVResult csvResult) {
         this.companyService = companyService;
+        this.csvResult = csvResult;
     }
 
-    public void addFileCompaniesToDB(String directoryPath, String inputFile) {
+    public CSVResult addFileCompaniesToDB(String directoryPath, String inputFile) {
         System.out.println("Adding companies - read Add file");
         String inputFilePath = takePath(directoryPath, inputFile);
         //String inputFilePath = String.valueOf(Paths.get(directoryPath + inputFile));
         //  String inputFilePath = (Paths.get(directoryPath + inputFile)).toAbsolutePath().toString();
         System.out.println("We are adding companies - from inpuFile path" + inputFilePath);
-        processLineByLine(inputFilePath, "add");
-//        if (csvReadResult.isSuccess()) {
+       return processLineByLine(inputFilePath, "add");
+//        if (csvResult.isSuccess()) {
 //            if (deleteFile(directoryPath, resultFile)) {
 //                System.out.println("File deletion " + deleteFile(directoryPath, resultFile));
 //                writeFile(directoryPath, resultFile);
 //            } else {
-//                csvReadResult.setSuccess(false);
-//                csvReadResult.setMessage("Problems deleting old .csv result file");
+//                csvResult.setSuccess(false);
+//                csvResult.setMessage("Problems deleting old .csv result file");
 //            }
 //        }
-//        System.out.println(csvReadResult.getMessage());
-//        return csvReadResult;
+//        System.out.println(csvResult.getMessage());
+//        return csvResult;
 
     }
 
@@ -71,22 +73,22 @@ public class CSVCompaniesService {
 //            }
     }
 
-    public void deleteFileCompaniesFromDB(String directoryPath, String inputFile) {
+    public CSVResult deleteFileCompaniesFromDB(String directoryPath, String inputFile) {
         System.out.println("Add test - read Process file");
         String inputFilePath = takePath(directoryPath, inputFile);
         System.out.println("we are deleting companies - take inpuFile path" + inputFilePath);
-        processLineByLine(inputFilePath, "delete");
-//        if (csvReadResult.isSuccess()) {
+         return processLineByLine(inputFilePath, "delete");
+//        if (csvResult.isSuccess()) {
 //            if (deleteFile(directoryPath, resultFile)) {
 //                System.out.println("File deletion " + deleteFile(directoryPath, resultFile));
 //                writeFile(directoryPath, resultFile);
 //            } else {
-//                csvReadResult.setSuccess(false);
-//                csvReadResult.setMessage("Problems deleting old .csv result file");
+//                csvResult.setSuccess(false);
+//                csvResult.setMessage("Problems deleting old .csv result file");
 //            }
 //        }
-//        System.out.println(csvReadResult.getMessage());
-//        return csvReadResult;
+//        System.out.println(csvResult.getMessage());
+//        return csvResult;
 
     }
 
@@ -106,9 +108,10 @@ public class CSVCompaniesService {
 //    }
 
 
-    private void processLineByLine(String inputFilePath, String operation) {
+    private CSVResult processLineByLine(String inputFilePath, String operation) {
         try (CSVReader csvReader = new CSVReaderBuilder(new FileReader(inputFilePath)).withSkipLines(1).build();) {
             String[] nextRecord = new String[0];
+            csvResult.setSuccess(false);
             while ((nextRecord = csvReader.readNext()) != null) {
                 System.out.println(operation + nextRecord[COMPANY_COLUMN] + operation + "country" + nextRecord[COUNTRY_COLUMN]);
                 switch (operation) {
@@ -118,7 +121,6 @@ public class CSVCompaniesService {
                         companyService.deleteCompany(nextRecord[COMPANY_COLUMN], nextRecord[COUNTRY_COLUMN]);
                         break;
 
-
                     case "add":
                         putToCompanyList(nextRecord[COMPANY_COLUMN], nextRecord[COUNTRY_COLUMN]);
                         break;
@@ -127,10 +129,14 @@ public class CSVCompaniesService {
                 System.out.println(operation + nextRecord[COMPANY_COLUMN]);
 
             }
+            csvResult.setSuccess(true);
         } catch (Exception e) {
+            csvResult.setSuccess(false);
+            csvResult.setMessage(e.getMessage());
             e.printStackTrace();
 
         }
+        return csvResult;
     }
 
 }

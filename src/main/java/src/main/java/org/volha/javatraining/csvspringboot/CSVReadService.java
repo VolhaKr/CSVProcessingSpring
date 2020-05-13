@@ -23,29 +23,29 @@ public class CSVReadService {
     private static final int COMPANY_COLUMN = 0;
     private static final int COUNTRY_COLUMN = 8;
     static TreeMap<Country, TreeSet<String>> countryCompanies = new TreeMap<>();
-    private CSVReadResult csvReadResult = new CSVReadResult();
+    private CSVResult csvResult = new CSVResult();
 
-    public CSVReadResult readProcessFile(String directoryPath, String inputFile, String resultFile) {
+    public CSVResult readProcessFile(String directoryPath, String inputFile, String resultFile) {
         System.out.println("test - read Process file" + directoryPath + inputFile);
-        csvReadResult.setSuccess(true);
+        csvResult.setSuccess(true);
         String inputFilePath = (Paths.get(directoryPath + inputFile)).toAbsolutePath().toString();
         System.out.println("test - take inpuFile path" + inputFilePath);
         readDataLineByLine(inputFilePath);
-        if (csvReadResult.isSuccess()) {
+        if (csvResult.isSuccess()) {
             if (deleteFile(directoryPath, resultFile)) {
                 System.out.println("File deletion " + deleteFile(directoryPath, resultFile));
                 writeFile(directoryPath, resultFile);
             } else {
-                csvReadResult.setSuccess(false);
-                csvReadResult.setMessage("Problems deleting old .csv result file");
+                csvResult.setSuccess(false);
+                csvResult.setMessage("Problems deleting old .csv result file");
             }
         }
-        System.out.println(csvReadResult.getMessage());
-        return csvReadResult;
+        System.out.println(csvResult.getMessage());
+        return csvResult;
 
     }
 
-    private CSVReadResult readDataLineByLine(String inputFilePath) {
+    private CSVResult readDataLineByLine(String inputFilePath) {
 //        System.out.println( "test" + directoryPath + inputFile);
 //        String inputFilePath = String.valueOf(Paths.get(directoryPath + inputFile));
 
@@ -65,13 +65,13 @@ public class CSVReadService {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            csvReadResult.setSuccess(false);
-            csvReadResult.setMessage("Problems reading .csv file occured." + e);
+            csvResult.setSuccess(false);
+            csvResult.setMessage("Problems reading .csv file occured." + e);
 
         }
 
 
-        return csvReadResult;
+        return csvResult;
     }
 
     private String convertToUpperCaseNoSpaces(String country) {
@@ -105,8 +105,8 @@ public class CSVReadService {
             countryCompanies.put(countryToAddEnum, companiesForCurrentCountry);
         } catch (Exception e) {
             e.printStackTrace();
-            csvReadResult.setSuccess(false);
-            csvReadResult.setMessage("Countries in CSV are not in the allowed enum");
+            csvResult.setSuccess(false);
+            csvResult.setMessage("Countries in CSV are not in the allowed enum");
             System.out.println("Countries in CSV are not in the allowed enum");
         }
     }

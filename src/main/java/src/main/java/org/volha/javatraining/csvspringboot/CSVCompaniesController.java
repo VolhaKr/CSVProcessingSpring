@@ -1,6 +1,8 @@
 package src.main.java.org.volha.javatraining.csvspringboot;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,10 +22,17 @@ public class CSVCompaniesController {
         this.csvCompaniesService = csvCompaniesService;
     }
 
-    @RequestMapping(method = POST, value = "/add-company-country")
-    public void addFileCompanies(@RequestBody FilePathRequest filePathRequest) {
+    @RequestMapping(method = POST, value = "/add-csv-company-country")
+    public ResponseEntity<?> addFileCompanies(@RequestBody FilePathRequest filePathRequest) {
         System.out.println("add folder " + filePathRequest.getLocation() + "file " + filePathRequest.getName());
-        csvCompaniesService.addFileCompaniesToDB(filePathRequest.getLocation(), filePathRequest.getName());
+        CSVResult addResult  = csvCompaniesService.addFileCompaniesToDB(filePathRequest.getLocation(), filePathRequest.getName());
+        if (addResult.isSuccess()) {
+            return ResponseEntity.ok().build();
+        } else {
+
+            //Which HttpStatus to use????
+            return new ResponseEntity(addResult.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
 
@@ -42,11 +51,18 @@ public class CSVCompaniesController {
 //                } else return new ResponseEntity<>(csvReadResult.getMessage(), HttpStatus.NOT_FOUND);
 
 
-    @RequestMapping(method = POST, value = "/delete-company-country")
-    public void deleteFileCompanies(@RequestBody FilePathRequest filePathRequest) {
+    @RequestMapping(method = POST, value = "/delete-csv-company-country")
+    public ResponseEntity<?> deleteFileCompanies(@RequestBody FilePathRequest filePathRequest) {
         System.out.println("Hello");
         System.out.println("folder " + filePathRequest.getLocation() + "file " + filePathRequest.getLocation());
-        csvCompaniesService.deleteFileCompaniesFromDB(filePathRequest.getLocation(), filePathRequest.getName());
+        CSVResult deleteResult  = csvCompaniesService.deleteFileCompaniesFromDB(filePathRequest.getLocation(), filePathRequest.getName());
+        if (deleteResult.isSuccess()) {
+            return ResponseEntity.ok().build();
+        } else {
+
+            //Which HttpStatus to use????
+            return new ResponseEntity(deleteResult.getMessage(), HttpStatus.BAD_REQUEST);
+        }
 //                       if (removedCompany){
 //                return ResponseEntity.ok().build();
 //            }

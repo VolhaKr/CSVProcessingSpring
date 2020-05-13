@@ -49,13 +49,13 @@ public class CSVReadController {
 //             + CSVFileApplication.RESULT_FILE));
         System.out.println("Hello");
         System.out.println("folder    " + csvReadRequest.getFileLocation() + "file " + csvReadRequest.getInputFileName() + "out " + csvReadRequest.getOutputFileName());
-        CSVReadResult csvReadResult = csvReadService.readProcessFile(csvReadRequest.getFileLocation(), csvReadRequest.getInputFileName(), csvReadRequest.getOutputFileName());
+        CSVResult csvResult = csvReadService.readProcessFile(csvReadRequest.getFileLocation(), csvReadRequest.getInputFileName(), csvReadRequest.getOutputFileName());
         System.out.println(" row 53 folder" + csvReadRequest.getFileLocation() + "file" + csvReadRequest.getInputFileName());
-        System.out.println(csvReadResult.isSuccess());
+        System.out.println(csvResult.isSuccess());
         //csvReadService.readDataLineByLine(directoryPath, String INPUT_FILE);
-        if (csvReadResult.isSuccess()) {
+        if (csvResult.isSuccess()) {
             return ResponseEntity.ok().build();
-        } else return new ResponseEntity<>(csvReadResult.getMessage(), HttpStatus.NOT_FOUND);
+        } else return new ResponseEntity<>(csvResult.getMessage(), HttpStatus.NOT_FOUND);
 
     }
 }
