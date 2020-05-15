@@ -1,5 +1,8 @@
 package src.main.java.org.volha.javatraining.csvspringboot;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CSVResult {
 
 

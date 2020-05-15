@@ -9,6 +9,7 @@ import java.util.*;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.CSVWriter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.FileReader;
@@ -24,7 +25,10 @@ public class CSVReadService {
     private static final int COUNTRY_COLUMN = 8;
     static TreeMap<Country, TreeSet<String>> countryCompanies = new TreeMap<>();
     private CSVResult csvResult = new CSVResult();
-
+    @Autowired
+    public CSVReadService(CSVResult csvResult) {
+       this.csvResult = csvResult;
+    }
     public CSVResult readProcessFile(String directoryPath, String inputFile, String resultFile) {
         System.out.println("test - read Process file" + directoryPath + inputFile);
         csvResult.setSuccess(true);
