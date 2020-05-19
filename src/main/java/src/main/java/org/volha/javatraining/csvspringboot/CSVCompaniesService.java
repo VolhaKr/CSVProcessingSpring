@@ -12,23 +12,31 @@ import java.nio.file.Paths;
 public class CSVCompaniesService {
     private static final int COMPANY_COLUMN = 1;
     private static final int COUNTRY_COLUMN = 0;
-
-    private final CompanyService companyService;
-    private CSVResult csvResult;
+   private final CompanyService companyService;
+  //  private CSVResult csvResult;
 
     @Autowired
-    public CSVCompaniesService(CompanyService companyService, CSVResult csvResult) {
+    public CSVCompaniesService(CompanyService companyService) {
         this.companyService = companyService;
-        this.csvResult = csvResult;
+      //  this.csvResult = csvResult;
     }
 
-    public CSVResult addFileCompaniesToDB(String directoryPath, String inputFile) {
-        System.out.println("Adding companies - read Add file");
-        String inputFilePath = takePath(directoryPath, inputFile);
+    public void addFileCompaniesToDB(String directoryPath, String inputFile) {
+                String inputFilePath = null;
+        try {
+            System.out.println("Adding companies - read Add file");
+            inputFilePath = takePath(directoryPath, inputFile);
+            System.out.println("We are adding companies - from inpuFile path" + inputFilePath);
+            processLineByLine(inputFilePath, "add");
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
         //String inputFilePath = String.valueOf(Paths.get(directoryPath + inputFile));
         //  String inputFilePath = (Paths.get(directoryPath + inputFile)).toAbsolutePath().toString();
-        System.out.println("We are adding companies - from inpuFile path" + inputFilePath);
-       return processLineByLine(inputFilePath, "add");
+        return;
+    }
+
 //        if (csvResult.isSuccess()) {
 //            if (deleteFile(directoryPath, resultFile)) {
 //                System.out.println("File deletion " + deleteFile(directoryPath, resultFile));
@@ -41,7 +49,7 @@ public class CSVCompaniesService {
 //        System.out.println(csvResult.getMessage());
 //        return csvResult;
 
-    }
+
 
     private String takePath(String directoryPath, String inputFile) {
         return String.valueOf(Paths.get(directoryPath + inputFile));
@@ -73,11 +81,12 @@ public class CSVCompaniesService {
 //            }
     }
 
-    public CSVResult deleteFileCompaniesFromDB(String directoryPath, String inputFile) {
+    public void deleteFileCompaniesFromDB(String directoryPath, String inputFile) {
         System.out.println("Add test - read Process file");
         String inputFilePath = takePath(directoryPath, inputFile);
         System.out.println("we are deleting companies - take inpuFile path" + inputFilePath);
-         return processLineByLine(inputFilePath, "delete");
+        processLineByLine(inputFilePath, "delete");
+        return;
 //        if (csvResult.isSuccess()) {
 //            if (deleteFile(directoryPath, resultFile)) {
 //                System.out.println("File deletion " + deleteFile(directoryPath, resultFile));
@@ -108,10 +117,10 @@ public class CSVCompaniesService {
 //    }
 
 
-    private CSVResult processLineByLine(String inputFilePath, String operation) {
+    private void processLineByLine(String inputFilePath, String operation) {
         try (CSVReader csvReader = new CSVReaderBuilder(new FileReader(inputFilePath)).withSkipLines(1).build();) {
             String[] nextRecord = new String[0];
-            csvResult.setSuccess(false);
+         //  csvResult.setSuccess(false);
             while ((nextRecord = csvReader.readNext()) != null) {
                 System.out.println(operation + nextRecord[COMPANY_COLUMN] + operation + "country" + nextRecord[COUNTRY_COLUMN]);
                 switch (operation) {
@@ -127,18 +136,12 @@ public class CSVCompaniesService {
 
                 }
                 System.out.println(operation + nextRecord[COMPANY_COLUMN]);
-
             }
-            csvResult.setSuccess(true);
         } catch (Exception e) {
-            csvResult.setSuccess(false);
-            csvResult.setMessage(e.getMessage());
             e.printStackTrace();
-
         }
-        return csvResult;
+        return;
     }
-
 }
 
 
