@@ -38,6 +38,7 @@ class CSVReadServiceTest {
     private void readNotExistingProcessFileReturnFalse() throws IOException {
         csvResult = csvReadService.readProcessFile(DIRECTORY_PATH, "data1.csv", RESULT_FILE);
         assertFalse(csvResult.isSuccess());
+        assertThrows(IOException.class, ()->csvReadService.readProcessFile(DIRECTORY_PATH, "data1.csv", RESULT_FILE));
     }
 
     @Test
@@ -81,6 +82,20 @@ class CSVReadServiceTest {
         Boolean deletedFile = csvReadService.deleteFile(DIRECTORY_PATH, null);
         assertFalse(deletedFile);
     }
+
+    @Test
+    private void readExistingFileLineByLineReturnTrue() throws IOException {
+        csvResult = csvReadService.readProcessFile(DIRECTORY_PATH, INPUT_FILE, RESULT_FILE);
+        assertTrue(csvResult.isSuccess());
+        List<String> inputFileStream = Files.readAllLines(Paths.get(INPUT_FILE));
+        List<String> resultFileStream = Files.readAllLines(Paths.get(RESULT_FILE));
+        assertEquals(inputFileStream.size(), resultFileStream.size());
+    }
+
+
+
+
+
 
 
 }

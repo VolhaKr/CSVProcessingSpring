@@ -25,61 +25,63 @@ public class CSVReadService {
     private static final int COUNTRY_COLUMN = 8;
     static TreeMap<Country, TreeSet<String>> countryCompanies = new TreeMap<>();
     private CSVResult csvResult = new CSVResult();
-    @Autowired
-    public CSVReadService(CSVResult csvResult) {
-       this.csvResult = csvResult;
-    }
+
+    //    @Autowired
+//    public CSVReadService(CSVResult csvResult) {
+//       this.csvResult = csvResult;
+//    }
     public CSVResult readProcessFile(String directoryPath, String inputFile, String resultFile) {
         System.out.println("test - read Process file" + directoryPath + inputFile);
-        csvResult.setSuccess(true);
-        String inputFilePath = (Paths.get(directoryPath + inputFile)).toAbsolutePath().toString();
+        csvResult.setSuccess(false);
+        String inputFilePath = getFilePath(directoryPath, inputFile);
         System.out.println("test - take inpuFile path" + inputFilePath);
-        readDataLineByLine(inputFilePath);
-        if (csvResult.isSuccess()) {
-            if (deleteFile(directoryPath, resultFile)) {
-                System.out.println("File deletion " + deleteFile(directoryPath, resultFile));
-                writeFile(directoryPath, resultFile);
-            } else {
-                csvResult.setSuccess(false);
-                csvResult.setMessage("Problems deleting old .csv result file");
-            }
+        csvResult = readDataLineByLine(inputFilePath);
+        if (deleteFile(directoryPath, resultFile)) {
+            System.out.println("File deletion " + deleteFile(directoryPath, resultFile));
+            writeFile(directoryPath, resultFile);
+            csvResult.setSuccess(true);
+        } else {
+            csvResult.setSuccess(false);
+            csvResult.setMessage("Problems processing .csv file");
         }
+
         System.out.println(csvResult.getMessage());
         return csvResult;
 
     }
 
+    private static String getFilePath(String directoryPath, String fileName) {
+        return (Paths.get(directoryPath + fileName)).toAbsolutePath().toString();
+    }
+
     private CSVResult readDataLineByLine(String inputFilePath) {
+
 //        System.out.println( "test" + directoryPath + inputFile);
 //        String inputFilePath = String.valueOf(Paths.get(directoryPath + inputFile));
 
         try {
             CSVReader csvReader = new CSVReaderBuilder(new FileReader(inputFilePath)).withSkipLines(1).build();
-
-
             String[] nextRecord = new String[0];
-
             // we are going to read data line by line
             while ((nextRecord = csvReader.readNext()) != null) {
                 putToCountryCompanies(nextRecord[COUNTRY_COLUMN], nextRecord[COMPANY_COLUMN]);
 //                System.out.print(nextRecord[COUNTRY_COLUMN] + "\t");
 //                System.out.print(nextRecord[COMPANY_COLUMN] + "\t");
 //                System.out.println();
-
             }
         } catch (Exception e) {
             e.printStackTrace();
             csvResult.setSuccess(false);
             csvResult.setMessage("Problems reading .csv file occured." + e);
 
+        } finally {
+            csvResult.setSuccess(true);
         }
-
-
         return csvResult;
     }
 
     private String convertToUpperCaseNoSpaces(String country) {
-        String tempConvertedString = country.replaceAll("\\s+", "_");
+        String tempConvertedString = country.replaceAll("\\s+", "");
         return tempConvertedString.trim().toUpperCase();
     }
 
@@ -87,7 +89,6 @@ public class CSVReadService {
     private void putToCountryCompanies(String country, String company) {
         String countryToAdd = convertToUpperCaseNoSpaces(country);
         Country countryToAddEnum = Country.NONE;
-
 //        if ((countryToAdd.equals("")) || (countryToAdd.isEmpty())) {
 //            countryToAdd = "NONE";
 //        }
@@ -116,7 +117,7 @@ public class CSVReadService {
     }
 
     public static boolean deleteFile(String directoryPath, String resultFile) {
-        String fileToDelete = (Paths.get(directoryPath + resultFile)).toAbsolutePath().toString();
+        String fileToDelete = getFilePath(directoryPath, resultFile);
         System.out.println("File to delete " + fileToDelete);
         try {
             return Files.deleteIfExists(Paths.get(fileToDelete));
@@ -128,12 +129,10 @@ public class CSVReadService {
     }
 
     public static void writeFile(String directoryPath, String resultFile) {
-        String fileToCreate = String.valueOf(Paths.get(directoryPath + resultFile));
-
+        String fileToCreate = getFilePath(directoryPath, resultFile);
         System.out.println("Trying to create file in " + fileToCreate);
         File file = new File(fileToCreate);
         System.out.println("file is creted" + fileToCreate);
-
         //FileWriter outputFileWriter = null;
         try (FileWriter outputFileWriter = new FileWriter(file);) {
             //create FileWriter object with file as parameter

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class Company {
     private String companyName;
     private String companyCountry;
+    private int companyID;
 
     public Company() {
     }
