@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import src.main.java.org.volha.javatraining.csvspringboot.mappers.CompanyCountryMapper;
 import src.main.java.org.volha.javatraining.csvspringboot.mappers.CompanyDAO;
 
 //import org.apache.logging.log4j.core.Logger;
@@ -18,12 +19,20 @@ import java.util.List;
 public class CompanyController {
     private final CompanyService companyService;
     private final CompanyDAO companyDAO;
+    private CompanyCountryMapper companyCountryMapper;
+
     //private static final Logger LOG = Logger.getLogger(CompanyController.class);
 
     @Autowired
-    public CompanyController(CompanyService companyService, CompanyDAO companyDAO) {
+    public CompanyController(CompanyService companyService, CompanyDAO companyDAO, CompanyCountryMapper companyCountryMapper) {
         this.companyService = companyService;
         this.companyDAO  = companyDAO;
+        this.companyCountryMapper = companyCountryMapper;
+    }
+
+    @GetMapping ("/all")
+    public List <Company> getAll(){
+        return companyCountryMapper.findAll();
     }
 
     @GetMapping("/list")
