@@ -8,6 +8,6 @@ import java.util.List;
 
 @Mapper
 public interface ResidentMapper {
-    @Select("Select * from resident")
+    @Select("select resident.residentID, resident.first_name, resident.second_name, resident.address, country.name from resident, country where resident.country = country.id;")
     List<Resident> findAllResidents();
 }

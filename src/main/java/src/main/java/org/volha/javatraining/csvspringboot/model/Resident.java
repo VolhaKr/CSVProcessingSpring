@@ -6,9 +6,9 @@ public class Resident {
     String secondName;
     String address;
     //or int country??? as in the database???
-   int country;
+   String country;
 
-    public Resident(int id, String firstName, String secondName, String address, int country) {
+    public Resident(int id, String firstName, String secondName, String address, String country) {
         this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
@@ -48,11 +48,11 @@ public class Resident {
         this.address = address;
     }
 
-    public int getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry(int country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 }
