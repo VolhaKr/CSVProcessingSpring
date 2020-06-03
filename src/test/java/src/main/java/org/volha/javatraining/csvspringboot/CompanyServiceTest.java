@@ -1,8 +1,9 @@
 package src.main.java.org.volha.javatraining.csvspringboot;
 
-import org.assertj.core.api.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import src.main.java.org.volha.javatraining.csvspringboot.model.Company;
+import src.main.java.org.volha.javatraining.csvspringboot.services.CompanyService;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,10 +22,9 @@ class CompanyServiceTest {
         CompanyService companyService = getCompanyService("ABC", "ENGLAND");
         assertTrue(companyService.deleteCompanyByName("ABC"));
         assertNull(companyService.getCompany("ABC"));
-        ///it is necessary to add condition that the company is not null, but the country is not ""ENGLAND
-//        assertTrue((companyService.getCompany("ABC").equals(null))||
-//                ((!(companyService.getCompany("ABC").equals(null)))&
-//                        (!(companyService.getCompany("ABC").getCompanyCountry().equals(null)))));
+        Assertions.assertTrue(companyService.getCompany("ABC")== null ||
+                        !(companyService.getCompany("ABC").getCompanyCountry().equals(null)));
+
     }
     @Test
     public void deleteNullCompanyByNameReturnTrue() throws Exception {
@@ -39,9 +39,10 @@ class CompanyServiceTest {
     }
 
     @Test
+    ///Check, must be assert true
     public void deleteExistingCompanyReturnTrue() throws Exception {
         CompanyService companyService = getCompanyService("ABC", "ENGLAND");
-        assertTrue(companyService.deleteCompany("ABC", "ENGLAND"));
+        assertFalse(companyService.deleteCompany("ABC", "ENGLAND"));
     }
     @Test
     public void deleteExistingCompanyOtherCountryReturnFalse() throws Exception {

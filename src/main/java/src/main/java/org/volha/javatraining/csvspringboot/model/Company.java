@@ -1,4 +1,4 @@
-package src.main.java.org.volha.javatraining.csvspringboot;
+package src.main.java.org.volha.javatraining.csvspringboot.model;
 
 
 import org.springframework.stereotype.Component;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class Company {
     private String companyName;
     private String companyCountry;
+    private int companyCountryID;
     private int companyID;
 
     public Company() {

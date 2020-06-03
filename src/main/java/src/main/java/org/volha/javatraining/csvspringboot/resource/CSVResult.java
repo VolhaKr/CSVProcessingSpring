@@ -1,6 +1,8 @@
-package src.main.java.org.volha.javatraining.csvspringboot;
+package src.main.java.org.volha.javatraining.csvspringboot.resource;
 
-public class CSVReadResult {
+import org.springframework.stereotype.Component;
+
+public class CSVResult {
 
 
     private boolean success;
@@ -22,7 +24,7 @@ public class CSVReadResult {
         this.message = message;
     }
 
-    public CSVReadResult() {
+    public CSVResult() {
     }
 
 }

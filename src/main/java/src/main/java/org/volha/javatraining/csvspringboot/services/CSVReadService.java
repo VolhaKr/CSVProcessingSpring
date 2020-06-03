@@ -1,4 +1,4 @@
-package src.main.java.org.volha.javatraining.csvspringboot;
+package src.main.java.org.volha.javatraining.csvspringboot.services;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -9,8 +9,9 @@ import java.util.*;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.CSVWriter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import src.main.java.org.volha.javatraining.csvspringboot.resource.CSVResult;
+import src.main.java.org.volha.javatraining.csvspringboot.model.Country;
 
 import java.io.FileReader;
 

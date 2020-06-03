@@ -1,8 +1,9 @@
-package src.main.java.org.volha.javatraining.csvspringboot;
+package src.main.java.org.volha.javatraining.csvspringboot.services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import src.main.java.org.volha.javatraining.csvspringboot.model.Company;
 
 import java.util.*;
 

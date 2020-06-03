@@ -4,9 +4,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
-import src.main.java.org.volha.javatraining.csvspringboot.Company;
+import src.main.java.org.volha.javatraining.csvspringboot.model.Company;
 import src.main.java.org.volha.javatraining.csvspringboot.model.CompanyResident;
-import src.main.java.org.volha.javatraining.csvspringboot.model.Resident;
 
 import java.util.List;
 

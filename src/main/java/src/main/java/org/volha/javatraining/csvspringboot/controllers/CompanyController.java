@@ -1,11 +1,14 @@
-package src.main.java.org.volha.javatraining.csvspringboot;
+package src.main.java.org.volha.javatraining.csvspringboot.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import src.main.java.org.volha.javatraining.csvspringboot.mappers.CompanyCountryMapper;
+import src.main.java.org.volha.javatraining.csvspringboot.mappers.CompanyResidentMapper;
+import src.main.java.org.volha.javatraining.csvspringboot.model.CompanyResident;
+import src.main.java.org.volha.javatraining.csvspringboot.services.CompanyService;
+import src.main.java.org.volha.javatraining.csvspringboot.model.Company;
 //import src.main.java.org.volha.javatraining.csvspringboot.mappers.CompanyDAO;
 
 //import org.apache.logging.log4j.core.Logger;
@@ -19,20 +22,20 @@ import java.util.List;
 public class CompanyController {
     private final CompanyService companyService;
    // private final CompanyDAO companyDAO;
-    private CompanyCountryMapper companyCountryMapper;
+    private CompanyResidentMapper companyResidentMapper;
 
     //private static final Logger LOG = Logger.getLogger(CompanyController.class);
 
     @Autowired
-    public CompanyController(CompanyService companyService, CompanyCountryMapper companyCountryMapper) {
+    public CompanyController(CompanyService companyService, CompanyResidentMapper companyResidentMapper) {
         this.companyService = companyService;
       //  this.companyDAO  = companyDAO;
-        this.companyCountryMapper = companyCountryMapper;
+        this.companyResidentMapper = companyResidentMapper;
     }
 
     @GetMapping ("/all")
-    public List <Company> getAllCompanies(){
-        return companyCountryMapper.findAllCompanies();
+    public List<CompanyResident> getAllCompanies(){
+        return companyResidentMapper.findAllCompaniesResidents();
     }
 
     @GetMapping("/list")

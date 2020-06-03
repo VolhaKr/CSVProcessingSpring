@@ -1,9 +1,8 @@
 package src.main.java.org.volha.javatraining.csvspringboot;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.springframework.boot.SpringApplication;
+import src.main.java.org.volha.javatraining.csvspringboot.resource.CSVResult;
+import src.main.java.org.volha.javatraining.csvspringboot.services.CSVReadService;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,11 +18,11 @@ class CSVReadServiceTest {
     private static final String INPUT_FILE = "data.csv";
     private static final String RESULT_FILE = "result.csv";
 
-    @BeforeAll
-    public void setup() {
-        csvReadService = new CSVReadService();
-        csvResult = new CSVResult();
-    }
+//    @BeforeAll
+//    public void setup() {
+//        csvReadService = new CSVReadService();
+//        csvResult = new CSVResult();
+//    }
 
     @Test
     private void readExistingProcessFileReturnTrue() throws IOException {

@@ -1,9 +1,12 @@
-package src.main.java.org.volha.javatraining.csvspringboot;
+package src.main.java.org.volha.javatraining.csvspringboot.services;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import src.main.java.org.volha.javatraining.csvspringboot.model.Company;
+import src.main.java.org.volha.javatraining.csvspringboot.model.Country;
+import src.main.java.org.volha.javatraining.csvspringboot.services.CompanyService;
 
 import java.io.FileReader;
 import java.nio.file.Paths;

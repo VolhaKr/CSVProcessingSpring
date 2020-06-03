@@ -1,4 +1,4 @@
-package src.main.java.org.volha.javatraining.csvspringboot;
+package src.main.java.org.volha.javatraining.csvspringboot.resource;
 
 public class CSVReadRequest {
     private String fileLocation;
