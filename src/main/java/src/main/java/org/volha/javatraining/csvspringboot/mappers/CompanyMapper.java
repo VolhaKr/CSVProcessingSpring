@@ -7,7 +7,7 @@ import src.main.java.org.volha.javatraining.csvspringboot.model.Company;
 import java.util.List;
 
 @Mapper
-public interface CompanyCountryMapper {
+public interface CompanyMapper {
     @Select("Select * from company")
     List<Company> findAllCompanies();
 }

@@ -11,6 +11,15 @@ public class CompanyResident {
         this.companyCountry = companyCountry;
     }
 
+    public CompanyResident(String companyName, String companyCountry) {
+        this.companyName = companyName;
+        this.companyCountry = companyCountry;
+    }
+
+    public CompanyResident(int companyID) {
+        this.companyID = companyID;
+    }
+
     public int getCompanyID() {
         return companyID;
     }

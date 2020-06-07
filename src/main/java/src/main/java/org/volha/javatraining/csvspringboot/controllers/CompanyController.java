@@ -21,10 +21,7 @@ import java.util.List;
 @RequestMapping("/companies")
 public class CompanyController {
     private final CompanyService companyService;
-   // private final CompanyDAO companyDAO;
     private CompanyResidentMapper companyResidentMapper;
-
-    //private static final Logger LOG = Logger.getLogger(CompanyController.class);
 
     @Autowired
     public CompanyController(CompanyService companyService, CompanyResidentMapper companyResidentMapper) {
