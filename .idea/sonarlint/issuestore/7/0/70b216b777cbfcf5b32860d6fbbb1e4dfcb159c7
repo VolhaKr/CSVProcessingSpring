@@ -1,0 +1,20 @@
+
+V	java:S125*"<This block of commented-out lines of code should be removed.(Í§¨“øÿÿÿÿ
+e
+java:S44883"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(íˆùüÿÿÿÿ
+Q	java:S125""<This block of commented-out lines of code should be removed.(å¤»Ë
+<
+java:S14524"&Remove usage of generic wildcard type.(ş‚Òë
+N	java:S106;"9Replace this use of System.out or System.err by a logger.(Ş¨‡
+V	java:S1256"<This block of commented-out lines of code should be removed.(ïÕÒşúÿÿÿÿ
+M
+java:S1068"2Remove this unused "COMPANY_COLUMN" private field.(ÓË£¥ÿÿÿÿÿ
+S	java:S1067"9Replace this use of System.out or System.err by a logger.(Ù¿éûÿÿÿÿ
+V	java:S125<"<This block of commented-out lines of code should be removed.(¾±İ†şÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(¢Ç‘ó
+H
+java:S1068"2Remove this unused "COUNTRY_COLUMN" private field.(ÜàÛ·
+N	java:S1068"9Replace this use of System.out or System.err by a logger.(¼¸ø¤
+P	java:S125'"<This block of commented-out lines of code should be removed.(ŸÿÉf
+V	java:S1250"<This block of commented-out lines of code should be removed.(£Ä®‘ıÿÿÿÿ
+S	java:S106:"9Replace this use of System.out or System.err by a logger.(„†Ø‘ÿÿÿÿÿ

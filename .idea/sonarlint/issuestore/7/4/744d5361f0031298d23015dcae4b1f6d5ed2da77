@@ -1,0 +1,23 @@
+
+X	java:S125"<This block of commented-out lines of code should be removed.(¥ÑÎÌ8Ì¢Ã§.
+Q
+java:S3740D"/Provide the parametrized type for this generic.(İ¬ğûÿÿÿÿ8Ì¢Ã§.
+d
+java:S4488I"HReplace "@RequestMapping(method = RequestMethod.PUT)" with "@PutMapping"(¯şú8Ì¢Ã§.
+X	java:S125<"<This block of commented-out lines of code should be removed.(µ¤ù¶8Ì¢Ã§.
+W	java:S125"<This block of commented-out lines of code should be removed.(½«øF8ú™åĞ§.
+X	java:S125Z"<This block of commented-out lines of code should be removed.(‡Ä¦ 8Ì¢Ã§.
+L
+java:S3740T"/Provide the parametrized type for this generic.(ïìéº8Ì¢Ã§.
+p
+java:S4488N"NReplace "@RequestMapping(method = RequestMethod.DELETE)" with "@DeleteMapping"(şŞµ“ÿÿÿÿÿ8Ì¢Ã§.
+X	java:S1257"<This block of commented-out lines of code should be removed.(µ¤ù¶8Ì¢Ã§.
+]	java:S125+"<This block of commented-out lines of code should be removed.(öº—âşÿÿÿÿ8Ì¢Ã§.
+]	java:S125"<This block of commented-out lines of code should be removed.(¢ÕÀÿÿÿÿÿ8ú™åĞ§.
+C
+java:S1452B"&Remove usage of generic wildcard type.(°¥ßÅ8Ì¢Ã§.
+Z	java:S106,"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8Ì¢Ã§.
+g
+java:S4488A"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(¸ ğ8Ì¢Ã§.
+W	java:S125d"<This block of commented-out lines of code should be removed.(éªß8Ì¢Ã§.
+]	java:S125h"<This block of commented-out lines of code should be removed.(Ä¥ªìşÿÿÿÿ8Ì¢Ã§.

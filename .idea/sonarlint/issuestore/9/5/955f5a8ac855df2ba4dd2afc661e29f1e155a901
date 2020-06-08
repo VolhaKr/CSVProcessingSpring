@@ -1,0 +1,16 @@
+
+X	java:S125B"<This block of commented-out lines of code should be removed.(æÏ‰8“Ø„å¢.
+]	java:S125"<This block of commented-out lines of code should be removed.(´ôÊšıÿÿÿÿ8”Ùƒå¢.
+l
+java:S4488"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Ø­ç‚ûÿÿÿÿ8ºöîÓŸ.
+f
+java:S44887"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(Œ¶÷F8Â÷‚  .
+X	java:S125P"<This block of commented-out lines of code should be removed.(°”¬…8Â÷‚  .
+X	java:S1252"<This block of commented-out lines of code should be removed.(°”¬…8ºöîÓŸ.
+Z	java:S1069"9Replace this use of System.out or System.err by a logger.(Ù¿éûÿÿÿÿ8Â÷‚  .
+T	java:S106:"9Replace this use of System.out or System.err by a logger.(øºó/8Â÷‚  .
+]	java:S125="<This block of commented-out lines of code should be removed.(ˆÂïƒúÿÿÿÿ8“Ø„å¢.
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(ÃİŒÆşÿÿÿÿ8ºöîÓŸ.
+]	java:S125("<This block of commented-out lines of code should be removed.(É¤üıúÿÿÿÿ8ºöîÓŸ.
+X	java:S125"<This block of commented-out lines of code should be removed.(øÔÀ–8ºöîÓŸ.
+]	java:S125#"<This block of commented-out lines of code should be removed.(Ù…€úÿÿÿÿ8”Ùƒå¢.

@@ -1,0 +1,41 @@
+
+T	java:S106—"9Replace this use of System.out or System.err by a logger.(Ñ”²®üÿÿÿÿ
+N	java:S106&"9Replace this use of System.out or System.err by a logger.(œíÅÉ
+R	java:S125"<This block of commented-out lines of code should be removed.(ö®˜ï
+Q	java:S125l"<This block of commented-out lines of code should be removed.(Š–‘û
+?
+java:S1148«"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+S	java:S1061"9Replace this use of System.out or System.err by a logger.(ùÈÊûÿÿÿÿ
+N	java:S106k"9Replace this use of System.out or System.err by a logger.(šüœŒ
+>
+java:S1148q"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(ŠËÍùÿÿÿÿ
+V	java:S125n"<This block of commented-out lines of code should be removed.(óºÿ½úÿÿÿÿ
+E
+java:S2093?"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+R	java:S125‘"<This block of commented-out lines of code should be removed.(†€éˆ
+L
+java:S1141š"5Extract this nested try block into a separate method.(ò“‡
+>
+java:S1148J"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148~"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+T
+java:S1854A">Remove this useless assignment to local variable "nextRecord".(¢°Şü
+Q	java:S125]"<This block of commented-out lines of code should be removed.(Û”™â
+?
+java:S1148¨"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+R	java:S125‰"<This block of commented-out lines of code should be removed.(ú‘Ì»
+S	java:S106z"9Replace this use of System.out or System.err by a logger.(Ô²Ëıÿÿÿÿ
+t
+java:S2293i"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ç‹ÿœúÿÿÿÿ
+O	java:S106ˆ"9Replace this use of System.out or System.err by a logger.(•½ˆÏ
+N	java:S106t"9Replace this use of System.out or System.err by a logger.(‡†€
+Q	java:S125E"<This block of commented-out lines of code should be removed.(®ú—¢
+I
+java:S1135"2Complete the task associated to this TODO comment.(ÉÚõÎ
+M	java:S106#"9Replace this use of System.out or System.err by a logger.(í‹Ï
+N	java:S106)"9Replace this use of System.out or System.err by a logger.( ˜–ø
+O	java:S106£"9Replace this use of System.out or System.err by a logger.(İçó»
+Q	java:S125<"<This block of commented-out lines of code should be removed.(å§Œ‰
+T	java:S106†"9Replace this use of System.out or System.err by a logger.(ä§ÿûÿÿÿÿ

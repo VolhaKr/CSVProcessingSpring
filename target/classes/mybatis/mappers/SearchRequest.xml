@@ -1,0 +1,15 @@
+<?xml version ="1.0" encoding = "UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+//?? what this tag does???
+<insert namespace = "com.SearchRequest">
+    <select id ="selectResidentsByCountryID" resultType=" org.volha.javatraining.springbootexample.spring-boot-server.src.main.java.org.volha.javatraining.csvspringboot.SearchRequest">
+        select country.name, residents.first_name, residents.second_name, residents.address from country, residents where country.id=residents.country;
+        ///select * from search_request limit 100;
+    </select>
+    <insert id = "insertSearchRequest" parameterType = "org.volha.javatraining.springbootexample.spring-boot-server.src.main.java.org.volha.javatraining.csvspringboot.SearchRequest"
+insert into search_request (SEARCH_TYPE, TIMME_REQUESTED, SEARCHED_VALUE, STATUS)
+    values (#{searchType}, now(), #{searchedValue}, 'QUEUED')
+</insert>
+</mapper>
