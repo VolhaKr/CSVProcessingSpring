@@ -45,6 +45,9 @@ public interface CompanyResidentMapper {
             "AND country.name = #{companyCountry} AND company.company_country_id = country.id;")
     void deleteCompany(String companyName, String companyCountry);
 
+    @Delete(" DELETE FROM company WHERE company.id = #{companyID};")
+    void deleteCompanyByID(Integer companyID);
+
     // how to make delete from company with where in table
     @Delete("DELETE FROM company " +
             "WHERE company.company_name = #{companyName} AND country.name = #{companyCountry} AND company.company_country_id = country.id;")

@@ -53,13 +53,22 @@ public class DatabaseCompanyService {
             String companyName = company.getCompanyName();
             String companyCountry = company.getCompanyCountry();
             List<CompanyResident> matchingCompanies = companyResidentMapper.selectSpecificCompany(companyName, companyCountry);
-            if (!(matchingCompanies.isEmpty())) {
-                System.out.println("Deleting");
-                companyResidentMapper.deleteCompany(companyName, companyCountry);
-
+            List <Integer> tempToTest = companyResidentMapper.selectSpecificCompanyID(companyName, companyCountry);
+            if (!(tempToTest.isEmpty())) {
+                for (int t:tempToTest) {
+                    System.out.println("Deleting");
+                    companyResidentMapper.deleteCompanyByID(t);
+                }
             } else {
                 System.out.println("Such company exists in the database");
             }
+//            if (!(matchingCompanies.isEmpty())) {
+//                System.out.println("Deleting");
+//                companyResidentMapper.deleteCompany(companyName, companyCountry);
+//
+//            } else {
+//                System.out.println("Such company exists in the database");
+//            }
         }
 
     }
