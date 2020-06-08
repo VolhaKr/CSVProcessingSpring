@@ -6,11 +6,10 @@ import src.main.java.org.volha.javatraining.csvspringboot.mappers.CompanyCountry
 import src.main.java.org.volha.javatraining.csvspringboot.model.Company;
 import src.main.java.org.volha.javatraining.csvspringboot.mappers.CompanyResidentMapper;
 import src.main.java.org.volha.javatraining.csvspringboot.model.CompanyResident;
-import src.main.java.org.volha.javatraining.csvspringboot.services.CSVCompaniesService;
+import src.main.java.org.volha.javatraining.csvspringboot.resource.CSVReadRequest;
 import src.main.java.org.volha.javatraining.csvspringboot.services.DatabaseCompanyService;
 
 import java.util.List;
-
 
 
 @RestController
@@ -84,46 +83,63 @@ public class DatabaseCompanyController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/new")
     public List<CompanyResident> insertCompany(@RequestBody Company company) {
-        //?? could be replaced with !(company.getCompanyName() == null)
-        if ((!(company == null)) & (!(company.getCompanyName() == null)) ) {
-            String companyName = company.getCompanyName();
-            String companyCountry = company.getCompanyCountry();
-            if (!(companyResidentMapper.checkIfCompanyExists(companyName, companyCountry))) {
-//    System.out.println("YES");
-                // if (!(companyResidentMapper.selectSpecificCompany (companyName, companyCountry).isEmpty())
-                List<String> matchingCountries = companyCountryMapper.getCountry(companyCountry);
-                System.out.println(matchingCountries);
-                if (matchingCountries.isEmpty()) {
-                    companyCountryMapper.insertCompanyCountryIfNotExists(companyCountry);
-                }
-                int companyCountryFK = companyCountryMapper.getCompanyCountryFK(companyCountry);
-                companyResidentMapper.insertCompany(company.getCompanyName(), companyCountryFK);
-
-            } else {
-                System.out.println("Such company exists in the database");
-            }
-        }
+        databaseCompanyService.insertCompanyIntoDB(company);
         return companyResidentMapper.findAllCompaniesResidents();
     }
 
-////////////////
-@RequestMapping(method = RequestMethod.POST, value = "/delete")
-public List<CompanyResident> deleteCompany(@RequestBody Company company) {
-    //?? could be replaced with !(company.getCompanyName() == null)
-    if ((!(company == null)) & (!(company.getCompanyName() == null)) ) {
-        String companyName = company.getCompanyName();
-        String companyCountry = company.getCompanyCountry();
-        List<CompanyResident> matchingCompanies = companyResidentMapper.selectSpecificCompany(companyName, companyCountry);
-        if (!(matchingCompanies.isEmpty())) {
-                System.out.println("Deleting");
-              companyResidentMapper.deleteCompany(companyName, companyCountry);
 
-        } else {
-            System.out.println("Such company exists in the database");
-        }
+    @RequestMapping(method = RequestMethod.POST, value = "/add-from-csv")
+    public List<CompanyResident> addCompaniesFromCSV(@RequestBody CSVReadRequest csvReadRequest) {
+        databaseCompanyService.insertCSVCompaniesIntoDB(csvReadRequest);
+        return companyResidentMapper.findAllCompaniesResidents();
     }
-    return companyResidentMapper.findAllCompaniesResidents();
-}
+//        //?? could be replaced with !(company.getCompanyName() == null)
+//        if ((!(company == null)) & (!(company.getCompanyName() == null)) ) {
+//            String companyName = company.getCompanyName();
+//            String companyCountry = company.getCompanyCountry();
+//            if (!(companyResidentMapper.checkIfCompanyExists(companyName, companyCountry))) {
+////    System.out.println("YES");
+//                // if (!(companyResidentMapper.selectSpecificCompany (companyName, companyCountry).isEmpty())
+//                List<String> matchingCountries = companyCountryMapper.getCountry(companyCountry);
+//                System.out.println(matchingCountries);
+//                if (matchingCountries.isEmpty()) {
+//                    companyCountryMapper.insertCompanyCountryIfNotExists(companyCountry);
+//                }
+//                int companyCountryFK = companyCountryMapper.getCompanyCountryFK(companyCountry);
+//                companyResidentMapper.insertCompany(company.getCompanyName(), companyCountryFK);
+//
+//            } else {
+//                System.out.println("Such company exists in the database");
+//            }
+//        }
+//        return companyResidentMapper.findAllCompaniesResidents();
+    //   }
+
+////////////////
+
+    @RequestMapping(method = RequestMethod.POST, value = "/delete")
+    public List<CompanyResident> deleteCompanyFromDatabase(@RequestBody Company company) {
+        databaseCompanyService.deleteCompanyFromDB(company);
+        return companyResidentMapper.findAllCompaniesResidents();
+    }
+
+
+//public List<CompanyResident> deleteCompany(@RequestBody Company company) {
+//    //?? could be replaced with !(company.getCompanyName() == null)
+//    if ((!(company == null)) & (!(company.getCompanyName() == null)) ) {
+//        String companyName = company.getCompanyName();
+//        String companyCountry = company.getCompanyCountry();
+//        List<CompanyResident> matchingCompanies = companyResidentMapper.selectSpecificCompany(companyName, companyCountry);
+//        if (!(matchingCompanies.isEmpty())) {
+//                System.out.println("Deleting");
+//              companyResidentMapper.deleteCompany(companyName, companyCountry);
+//
+//        } else {
+//            System.out.println("Such company exists in the database");
+//        }
+//    }
+//    return companyResidentMapper.findAllCompaniesResidents();
+//}
 }
 
 

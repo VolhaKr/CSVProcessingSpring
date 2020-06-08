@@ -24,7 +24,7 @@ public class CSVCompaniesService {
       //  this.csvResult = csvResult;
     }
 
-    public void addFileCompaniesToDB(String directoryPath, String inputFile) {
+    public void addFileCompaniesToDBList(String directoryPath, String inputFile) {
                 String inputFilePath = null;
         try {
             System.out.println("Adding companies - read Add file");

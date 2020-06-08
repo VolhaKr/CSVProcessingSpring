@@ -25,7 +25,7 @@ public class CSVCompaniesController {
     @RequestMapping(method = POST, value = "/add-csv-company-country")
     public void addFileCompanies(@RequestBody FilePathRequest filePathRequest) {
         System.out.println("add folder " + filePathRequest.getLocation() + "file " + filePathRequest.getName());
-        csvCompaniesService.addFileCompaniesToDB(filePathRequest.getLocation(), filePathRequest.getName());
+        csvCompaniesService.addFileCompaniesToDBList(filePathRequest.getLocation(), filePathRequest.getName());
     }
 //        if (addResult.isSuccess()) {
 //            return ResponseEntity.ok().build();
