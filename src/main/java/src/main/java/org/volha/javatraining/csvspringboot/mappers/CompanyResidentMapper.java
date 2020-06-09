@@ -25,7 +25,7 @@ public interface CompanyResidentMapper {
     boolean checkIfCompanyExists(String companyName, String companyCountry);
 
 
-    //????Can I select only ID????? This dpesn't work
+    //????How to select only ID????? THis dpesn't work
     @Select("SELECT company.id FROM company, country WHERE company.company_name = #{companyName} AND country.name = #{companyCountry} AND company.company_country_id = country.id);")
     List<Integer> selectSpecificCompanyID(String companyName, String companyCountry);
 
@@ -44,9 +44,6 @@ public interface CompanyResidentMapper {
     @Delete(" DELETE company FROM company, country WHERE company.company_name = #{companyName}" +
             "AND country.name = #{companyCountry} AND company.company_country_id = country.id;")
     void deleteCompany(String companyName, String companyCountry);
-
-    @Delete(" DELETE FROM company WHERE company.id = #{companyID};")
-    void deleteCompanyByID(Integer companyID);
 
     // how to make delete from company with where in table
     @Delete("DELETE FROM company " +
