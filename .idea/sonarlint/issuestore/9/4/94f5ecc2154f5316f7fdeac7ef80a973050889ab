@@ -1,0 +1,39 @@
+
+N	java:S106 "9Replace this use of System.out or System.err by a logger.(”§îó
+>
+java:S1148$"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+V	java:S125I"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ
+T	java:S106€"9Replace this use of System.out or System.err by a logger.(Ëâ«¸ÿÿÿÿÿ
+b
+java:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ìè²ë
+Q	java:S125"<This block of commented-out lines of code should be removed.(ó––Œ
+V	java:S125="<This block of commented-out lines of code should be removed.(öçð¤ýÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ŒœÑÿÿÿÿÿ
+1
+java:S3626\"Remove this redundant jump.(ûÁÝ…
+V	java:S125~"<This block of commented-out lines of code should be removed.(‚«·Üùÿÿÿÿ
+V	java:S125]"<This block of commented-out lines of code should be removed.(¥´Å†úÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ÉÜ¸­
+Q	java:S125N"<This block of commented-out lines of code should be removed.(Áè¦‘
+j
+java:S1128	"TRemove this unnecessary import: same package classes are always implicitly imported.(ð†çÿ
+V	java:S125E"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ
+V	java:S125Q"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ
+S	java:S106X"9Replace this use of System.out or System.err by a logger.(½‡óûÿÿÿÿ
+?
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+1
+java:S3626("Remove this redundant jump.(ûÁÝ…
+V
+java:S1854M"@Remove this useless assignment to local variable "countryToAdd".(Ìô‹
+V	java:S125+"<This block of commented-out lines of code should be removed.(¥´Å†úÿÿÿÿ
+8	java:S131""Add a default case to this switch.(ìè²ë
+P	java:S125k"<This block of commented-out lines of code should be removed.(Ø¼š7
+G
+java:S1481M"1Remove this unused "countryToAdd" local variable.(Ìô‹
+2
+java:S3626’"Remove this redundant jump.(ûÁÝ…
+O	java:S106"9Replace this use of System.out or System.err by a logger.(óú³
+V	java:S125w"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ
+V	java:S125&"<This block of commented-out lines of code should be removed.(“ ÍËþÿÿÿÿ
+S	java:S106Z"9Replace this use of System.out or System.err by a logger.(ý…öÇúÿÿÿÿ

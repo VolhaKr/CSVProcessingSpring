@@ -1,0 +1,16 @@
+
+K
+java:S1940H")Use the opposite operator ("!=") instead.(‰½öÿÿÿÿÿ8ªŠûÏ¨.
+Z	java:S106L"9Replace this use of System.out or System.err by a logger.(‰ú£ûûÿÿÿÿ8ĞÌ»Ù¨.
+V	java:S125."<This block of commented-out lines of code should be removed.(µãœüüÿÿÿÿ
+]	java:S125M"<This block of commented-out lines of code should be removed.(¤•¬Ôşÿÿÿÿ8˜¼ˆÙ¨.
+Z	java:S106X"9Replace this use of System.out or System.err by a logger.(ıÿñÜşÿÿÿÿ8éñ°Ù¨.
+X	java:S125$"<This block of commented-out lines of code should be removed.(İ·¶™8„‚€Ï¨.
+V	java:S1256"<This block of commented-out lines of code should be removed.(½õÇÜúÿÿÿÿ
+Q	java:S125="<This block of commented-out lines of code should be removed.(¢ÕÃí
+ˆ
+java:S2178H"fCorrect this "&" to "&&" and extract the right operand to a variable if it should always be evaluated.(‰½öÿÿÿÿÿ8ªŠûÏ¨.
+g
+java:S4488E"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(¸ ğ8ªŠûÏ¨.
+K
+java:S1940H")Use the opposite operator ("!=") instead.(‰½öÿÿÿÿÿ8ªŠûÏ¨.

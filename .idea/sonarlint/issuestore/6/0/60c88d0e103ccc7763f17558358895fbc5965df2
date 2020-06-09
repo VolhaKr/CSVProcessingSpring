@@ -1,0 +1,28 @@
+
+R	java:S125‘"<This block of commented-out lines of code should be removed.(ğ¿¨Í
+P	java:S125z"<This block of commented-out lines of code should be removed.(ª¯°q
+Q	java:S125u"<This block of commented-out lines of code should be removed.(ÄŸàØ
+M	java:S106N"9Replace this use of System.out or System.err by a logger.(¸Œ…?
+X	java:S125"<This block of commented-out lines of code should be removed.(¢ ¶€8”œØ¨.
+V	java:S125""<This block of commented-out lines of code should be removed.(Œ§ëíùÿÿÿÿ
+R	java:S125ƒ"<This block of commented-out lines of code should be removed.(Ïé
+Q	java:S125"<This block of commented-out lines of code should be removed.(ìñŠ¹
+W	java:S125"<This block of commented-out lines of code should be removed.(‡Ù€–úÿÿÿÿ
+V	java:S125X"<This block of commented-out lines of code should be removed.(‹’¬øÿÿÿÿ
+R	java:S125Š"<This block of commented-out lines of code should be removed.(ÙıÒõ
+Q	java:S125'"<This block of commented-out lines of code should be removed.(‡àÏâ
+P	java:S125>"<This block of commented-out lines of code should be removed.(›ÒÕP
+P	java:S1250"<This block of commented-out lines of code should be removed.(¢™µ
+Q	java:S125_"<This block of commented-out lines of code should be removed.(†€éˆ
+N	java:S106S"9Replace this use of System.out or System.err by a logger.(“®¤Ù
+R	java:S125•"<This block of commented-out lines of code should be removed.(Ùš§
+X	java:S125"<This block of commented-out lines of code should be removed.(¤Ã‹ã8”œØ¨.
+P	java:S1254"<This block of commented-out lines of code should be removed.(Ä—·J
+V	java:S125o"<This block of commented-out lines of code should be removed.(ˆª‰´ÿÿÿÿÿ
+V	java:S125x"<This block of commented-out lines of code should be removed.(šÈºùÿÿÿÿ
+Q	java:S125f"<This block of commented-out lines of code should be removed.(†øÜê
+S	java:S106`"9Replace this use of System.out or System.err by a logger.(·Ğÿÿÿÿÿ
+ƒ
+java:S2178T"fCorrect this "&" to "&&" and extract the right operand to a variable if it should always be evaluated.(ü€Šş8±ÏÏ¨.
+H
+java:S1068"+Remove this unused "company" private field.(Ç€ŞĞ8‚æòØ¨.
