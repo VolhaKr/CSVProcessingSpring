@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CompanyServiceTest {
     private CompanyService getCompanyService (String companyName, String companyCountry){
-        return new CompanyService (new Company(companyName, companyCountry));
+        return new CompanyService ();
     }
 
 //    @Autowired

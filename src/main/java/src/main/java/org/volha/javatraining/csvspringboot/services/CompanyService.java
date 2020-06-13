@@ -11,7 +11,7 @@ import java.util.*;
 @Service
 public class CompanyService {
 
-    private final Company company;
+   // private final Company company;
     private final List<Company> companyList = new ArrayList<>(Arrays.asList(new Company("LTD", "ENGLANG"),
             new Company("MC", "GERMANY"),
             new Company("ABC", "ENGLANG"),
@@ -26,19 +26,16 @@ public class CompanyService {
 //        }
 //    };
 
-    @Autowired
-    public CompanyService(Company company) {
-        this.company = company;
-    }
+//    @Autowired
+//    public CompanyService(Company company) {
+//        this.company = company;
+//    }
 
 //    public String getCompany (String companyName) {
 //        return company.getCompanyName();
 //    }
 
     public List<Company> list() {
-//        companyList.add(new Company("LTD", "ENGLANG"));
-//        companyList.add(new Company("MC", "GERMANY"));
-//        companyList.add(new Company("ABC", "ENGLANG"));
         return companyList;
     }
 //
@@ -107,47 +104,6 @@ public class CompanyService {
 //        return tempCompany;
 //    }
 
-
-//    public String getCompanyCountry(String companyName) {
-//        Company tempCompany = companyList.stream().filter(t -> t.getCompanyName().equals(companyName)).findFirst().get();
-//        return tempCompany.getCompanyCountry;
-//    }
-
-
-////public List<CompanyDao> list(){
-////    return new Array<>(Arrays.asList(new CompanyDao("LTD", "ENGLANG"),
-////            new CompanyDao("MC", "GERMANY"),
-////            new CompanyDao("ABC", "ENGLANG")));
-////
-////}
-//
-//    public CompanyDao get
-//
-//
-//    public String removeFiatNotOnApi() throws UnirestException {
-//        List<Fiat> list = list();
-//        StringBuilder stringBuilder = new StringBuilder();
-//
-//        for (Fiat fiat : list) {
-//            if(currencyService.getCurrentPrice(fiat.getAcronym(), "USD") == -1) {
-//                stringBuilder.append(fiat.getAcronym());
-//                fiatDao.delete(fiat.getAcronym());
-//            }
-//        }
-////
-////        String[] deleteThis = {
-////                "SVC USD",
-////                "UYU UYI",
-////                "ZAR LSL",
-////                "ZAR NAD"
-////        };
-////
-////        for (String deleteThi : deleteThis) {
-////            fiatDao.delete(deleteThi);
-////        }
-////
-//        return stringBuilder.toString();
-//    }
 
 }
 

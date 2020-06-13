@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import src.main.java.org.volha.javatraining.csvspringboot.mappers.CompanyResidentMapper;
+import src.main.java.org.volha.javatraining.csvspringboot.mappers.CompanyMapper;
 import src.main.java.org.volha.javatraining.csvspringboot.model.CompanyResident;
 import src.main.java.org.volha.javatraining.csvspringboot.services.CompanyService;
 import src.main.java.org.volha.javatraining.csvspringboot.model.Company;
@@ -21,18 +21,18 @@ import java.util.List;
 @RequestMapping("/companies")
 public class CompanyController {
     private final CompanyService companyService;
-    private CompanyResidentMapper companyResidentMapper;
+    private CompanyMapper companyMapper;
 
     @Autowired
-    public CompanyController(CompanyService companyService, CompanyResidentMapper companyResidentMapper) {
+    public CompanyController(CompanyService companyService, CompanyMapper companyMapper) {
         this.companyService = companyService;
       //  this.companyDAO  = companyDAO;
-        this.companyResidentMapper = companyResidentMapper;
+        this.companyMapper = companyMapper;
     }
 
     @GetMapping ("/all")
     public List<CompanyResident> getAllCompanies(){
-        return companyResidentMapper.findAllCompaniesResidents();
+        return companyMapper.findAllCompaniesResidents();
     }
 
     @GetMapping("/list")
@@ -72,6 +72,7 @@ public class CompanyController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/update/{companyname}")
     public void updateCompany(@RequestBody Company companyNew, @PathVariable("companyname") String companyName) {
+        System.out.println("update in controller");
         companyService.updateCompany(companyName, companyNew);
     }
 

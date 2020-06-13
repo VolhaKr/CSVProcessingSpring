@@ -75,8 +75,6 @@ public class CSVReadService {
             csvResult.setSuccess(false);
             csvResult.setMessage("Problems reading .csv file occured." + e);
 
-        } finally {
-            csvResult.setSuccess(true);
         }
         return csvResult;
     }
