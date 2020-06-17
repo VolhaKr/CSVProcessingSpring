@@ -11,7 +11,6 @@ import src.main.java.org.volha.javatraining.csvspringboot.services.DatabaseCompa
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/database_companies")
 public class DatabaseCompanyController {
@@ -36,50 +35,6 @@ public class DatabaseCompanyController {
     public List<CompanyResident> getAllResidentsOfCountry(@PathVariable("countryname") String countryName) {
         return companyMapper.findAllCompaniesResidentsFromSpecificCountry(countryName);
     }
-
-//    @GetMapping("/update")
-//    private List<Company> update() {
-//        int fk = 1000;
-//        Company company = new Company();
-//        company.setCompanyName("Added Company");
-//        company.setCompanyCountry("ENGLAND");
-//        companyMapper.insertCompany("Added Company", fk);
-//        return companyMapper.findAllCompaniesResidents();
-//    }
-
-//    @RequestMapping(method = RequestMethod.PUT, value = "/update/{companyname}")
-//    public List<CompanyResident> updateCompany(@RequestBody Company companyNew, @PathVariable("companyname") String companyToUpdateName) {
-//        if ((!(companyNew == null)) & (!(companyNew.getCompanyName() == null)) ) {
-//            String companyNewName = companyNew.getCompanyName();
-//            String companyNewCountry = companyNew.getCompanyCountry();
-//            List <CompanyResident> matchingCompanies = companyMapper.selectSpecificCompany(companyNewName, companyNewCountry);
-//            if (!matchingCompanies.isEmpty()) {
-//    System.out.println("updating...");
-//                // if (!(companyMapper.selectSpecificCompany (companyName, companyCountry).isEmpty())
-//                List<String> matchingCountries = companyCountryMapper.getCountry(companyNewCountry);
-//                System.out.println(matchingCountries);
-//                if (matchingCountries.isEmpty()) {
-//                    companyCountryMapper.insertCompanyCountryIfNotExists(companyNewCountry);
-//                }
-//                int companyCountryFK = companyCountryMapper.getCompanyCountryFK(companyNewCountry);
-//                companyMapper.updateCompany(companyToUpdateName, companyNew.getCompanyName(), companyCountryFK);
-//
-//            } else {
-//                System.out.println("Such company exists in the database");
-//            }
-//        }
-//        return companyMapper.findAllCompaniesResidents();
-//    }
-
-
-//        @PostMapping ("/add-company/")
-//public List<CompanyResident> insertCompany(String companyName, String companyCountry) {
-//        List<String> matchingCountries = companyCountryMapper.getCountry(companyCountry);
-//          if (matchingCountries.isEmpty()){
-//              companyCountryMapper.insertCompanyCountryIfNotExists(companyCountry);
-//          }
-//            return companyMapper.findAllCompaniesResidents();
-//    }
 
     @RequestMapping(method = RequestMethod.POST, value = "/new")
     public List<CompanyResident> insertCompany(@RequestBody Company company) {

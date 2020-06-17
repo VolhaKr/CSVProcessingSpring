@@ -17,14 +17,20 @@ public class Company {
     public Company(int companyID, String companyName, String companyCountry) {
         this.companyID = companyID;
         this.companyName = companyName;
-        this.companyCountry = companyCountry;
+        this.companyCountry = getCountry(companyCountry);
     }
 
     public Company(String companyName, String companyCountry) {
         this.companyName = companyName;
-        this.companyCountry = companyCountry;
+        this.companyCountry = getCountry(companyCountry);
     }
 
+    private String getCountry (String countryName){
+        if (countryName==null){
+            return Country.NONE.name();
+        }
+        return countryName;
+    }
     public int getCompanyID() {
         return companyID;
     }

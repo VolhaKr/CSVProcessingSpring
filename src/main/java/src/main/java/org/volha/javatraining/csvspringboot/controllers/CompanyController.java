@@ -1,6 +1,5 @@
 package src.main.java.org.volha.javatraining.csvspringboot.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,13 +8,8 @@ import src.main.java.org.volha.javatraining.csvspringboot.mappers.CompanyMapper;
 import src.main.java.org.volha.javatraining.csvspringboot.model.CompanyResident;
 import src.main.java.org.volha.javatraining.csvspringboot.services.CompanyService;
 import src.main.java.org.volha.javatraining.csvspringboot.model.Company;
-//import src.main.java.org.volha.javatraining.csvspringboot.mappers.CompanyDAO;
-
-//import org.apache.logging.log4j.core.Logger;
-//import java.util.logging.Logger;
 
 import java.util.List;
-
 
 @RestController
 @RequestMapping("/companies")
@@ -26,12 +20,11 @@ public class CompanyController {
     @Autowired
     public CompanyController(CompanyService companyService, CompanyMapper companyMapper) {
         this.companyService = companyService;
-      //  this.companyDAO  = companyDAO;
         this.companyMapper = companyMapper;
     }
 
-    @GetMapping ("/all")
-    public List<CompanyResident> getAllCompanies(){
+    @GetMapping("/all")
+    public List<CompanyResident> getAllCompanies() {
         return companyMapper.findAllCompaniesResidents();
     }
 
@@ -40,7 +33,6 @@ public class CompanyController {
         try {
             return new ResponseEntity<>(companyService.list(), HttpStatus.OK);
         } catch (Exception e) {
-            //  LOG.error(e);
             System.err.println(e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -50,17 +42,6 @@ public class CompanyController {
     public Company getCompany(@PathVariable("companyname") String companyName) {
         return companyService.getCompany(companyName);
     }
-
-//    @GetMapping(value ="/list/{companyname}")
-//    public Company getCompany(@PathVariable String companyName) {
-//        return companyService.getCompany(companyName);
-//    }
-
-//    @GetMapping("/list/{companyname}")
-//    public Company getCompany(@PathVariable String companyName) {
-//        return companyService.getCompany(companyName);
-//    }
-
 
     @RequestMapping(method = RequestMethod.POST, value = "/new")
     public ResponseEntity<?> addCompany(@RequestBody Company company) {
@@ -85,33 +66,5 @@ public class CompanyController {
             return new ResponseEntity("Could not find company " + companyName, HttpStatus.NOT_FOUND);
         }
 
-//       DELETE WITH RESPONSE ENTITY
-//
-//        @RequestMapping(method = RequestMethod.DELETE, value = "/list/{companyname}")
-//        public ResponseEntity deleteCompany(@PathVariable("companyname") String companyName) {
-//            try {
-//       return new ResponseEntity<>(companyService.deleteCompany(companyName), HttpStatus.OK);
-//        } catch (Exception e) {
-//            //LOG.error(e);
-//            System.err.println(e);
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//       }
-
-
-        //companyService.deleteCompany(companyName);
-
-
-//    @GetMapping("delete")
-//    public ResponseEntity<String> delete() {
-//        try {
-//            return new ResponseEntity<>(fiatService.removeFiatNotOnApi(), HttpStatus.OK);
-//        } catch (Exception e) {
-//            LOG.error(e);
-//            System.err.println(e);
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//    }
     }
-
-
 }
